@@ -1,0 +1,128 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+		"makefile.makefilePath": "${workspaceFolder}/build/Makefile",
+		"makefile.makeDirectory": "${workspaceFolder}/build/",
+		"files.associations": {
+			"stdio.h": "c",
+			"glfw3.h": "c",
+			"glad.h": "c",
+			"array": "cpp",
+			"atomic": "cpp",
+			"bit": "cpp",
+			"*.tcc": "cpp",
+			"cctype": "cpp",
+			"clocale": "cpp",
+			"cmath": "cpp",
+			"compare": "cpp",
+			"concepts": "cpp",
+			"cstdarg": "cpp",
+			"cstddef": "cpp",
+			"cstdint": "cpp",
+			"cstdio": "cpp",
+			"cstdlib": "cpp",
+			"cstring": "cpp",
+			"ctime": "cpp",
+			"cwchar": "cpp",
+			"cwctype": "cpp",
+			"deque": "cpp",
+			"string": "cpp",
+			"unordered_map": "cpp",
+			"vector": "cpp",
+			"exception": "cpp",
+			"algorithm": "cpp",
+			"functional": "cpp",
+			"iterator": "cpp",
+			"memory": "cpp",
+			"memory_resource": "cpp",
+			"numeric": "cpp",
+			"random": "cpp",
+			"string_view": "cpp",
+			"system_error": "cpp",
+			"tuple": "cpp",
+			"type_traits": "cpp",
+			"utility": "cpp",
+			"initializer_list": "cpp",
+			"iomanip": "cpp",
+			"iosfwd": "cpp",
+			"iostream": "cpp",
+			"istream": "cpp",
+			"limits": "cpp",
+			"new": "cpp",
+			"numbers": "cpp",
+			"ostream": "cpp",
+			"sstream": "cpp",
+			"stdexcept": "cpp",
+			"streambuf": "cpp",
+			"cinttypes": "cpp",
+			"typeinfo": "cpp",
+			"optional": "cpp"
+		},
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "launch",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${workspaceFolder}/build/bin/app",
+				"externalConsole": false,
+				"cwd": "${workspaceFolder}",
+			}
+		],
+		"compounds": []
+	},
+	"tasks": {
+		"version": "2.0.0",
+		
+		"tasks": [
+			{
+				"label": "generate",
+				"type": "shell",
+				"command": ["premake5 --file=build.lua gmake2"],
+				"problemMatcher": [],
+				"presentation": {
+					"reveal": "always",
+					"clear": true,
+					"focus": false,
+					"showReuseMessage": true
+				}
+			},
+			{
+				"label": "configure",
+				"type": "shell",
+				"command": ["${command:makefile.configure}"],
+				"problemMatcher": [],
+				"presentation": {
+					"reveal": "always",
+					"focus": false,
+					"showReuseMessage": true
+				},
+				"dependsOn": "generate",
+			},
+			{
+				"label": "build",
+				"options": { "cwd": "${workspaceFolder}/build" },
+				"command": "make",
+				"type": "shell",
+				"args": [],
+				"problemMatcher": [
+					"$gcc"
+				],
+				"presentation": {
+					"reveal": "always",
+					"clear": true,
+					"focus": false,
+					"showReuseMessage": true
+				},
+				"group": "build"
+			}
+		]
+	}
+}
